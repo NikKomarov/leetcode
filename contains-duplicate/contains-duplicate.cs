@@ -1,6 +1,6 @@
 public class Solution {
     public bool ContainsDuplicate(int[] nums) {
-        var map = new Dictionary<int, int>();
+        var map = new Dictionary<int, bool>();
         
         foreach(var num in nums)
         {
@@ -9,7 +9,7 @@ public class Solution {
                 return true;
             }
             
-            map[num] = num;
+            map[num] = true;
         }
         
         return false;
