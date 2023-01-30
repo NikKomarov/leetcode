@@ -1,20 +1,24 @@
 public class Solution {
     public void Rotate(int[] nums, int k) {
-        var steps = k % nums.Length;
-        var result = new int[nums.Length];
-        for(var i = 0; i < nums.Length; i++)
+        k %= nums.Length;
+        int updated = 0;
+        int start = 0;
+        while(updated < nums.Length)
         {
-            var newIndex = i + steps;
-            if(newIndex > nums.Length - 1)
+            int i = start;
+            int prev = nums[i];
+           
+            do 
             {
-                newIndex = newIndex - nums.Length;
+                i = (i + k) % nums.Length;
+                int temp = nums[i];
+                nums[i] = prev;
+                prev = temp;
+                updated++;
             }
-            result[newIndex] = nums[i];
-        }
-        
-        for(var i = 0; i < nums.Length; i++)
-        {
-            nums[i] = result[i];
+            while(i != start);
+            
+            start++;
         }
     }
 }
